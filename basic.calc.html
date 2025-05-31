@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    .box {
+      width: 400px;
+      padding: 30px 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    input {
+      display: block;
+      width: 90%;
+      padding: 12px;
+      font-size: 18px;
+      margin: 20px auto;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #007bff;
+    }
+
+    button {
+      color: white;
+      width: 150px;
+      height: 45px;
+      font-size: 18px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .print {
+      margin-top: 30px;
+    }
+
+    .print p {
+      font-size: 18px;
+      color: #333;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <input type="text" id="inputValue" placeholder="Enter numbers separated by commas">
+    <button type="button" onclick="FNX()">Add</button>
+    <div class="print">
+      <p class="sum"></p>
+      <p class="average"></p>
+      <p class="elements"></p>
+      <p class="min"></p>
+      <p class="max"></p>
+    </div>
+  </div>
+
+  <script>
+    let sum1 = 0;
+    let arr = [];
+    var minimum = 0;
+
+    function FNX() {
+      const inputValue = parseInt(document.querySelector("input").value);
+      const inputV = Number(inputValue);
+      console.log(inputV);
+
+      const sum = () => {
+        sum1 += inputV;
+        return sum1;
+      }
+      let s = sum();
+      console.log(s);
+      let p1 = document.querySelector(".sum");
+      p1.innerText = `Sum = ${s}`;
+
+      let avg = sum1 / 2;
+      let p2 = document.querySelector(".average");
+      p2.innerText = `Average = ${avg}`;
+
+      let element = document.querySelector(".elements");
+      arr.push(inputV)
+      element.innerText = `Elements = ${arr}`;
+
+      let minimum = Math.min(...arr);
+      document.querySelector(".min").innerText = `Minimum = ${minimum}`;
+
+      let maximum = Math.max(...arr);
+      document.querySelector(".max").innerText = `Maximum = ${maximum}`;
+    }
+  </script>
+</body>
+</html>
